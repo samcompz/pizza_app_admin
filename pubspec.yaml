@@ -27,6 +27,7 @@ dependencies:
   equatable: ^2.0.7
 
   cupertino_icons: ^1.0.8
+  font_awesome_flutter: ^10.8.0
 
   user_repository:
     path: packages/user_repository

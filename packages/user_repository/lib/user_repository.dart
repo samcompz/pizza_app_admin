@@ -1,4 +1,4 @@
-library user_repository;  //library names are not necessary
+library;  //library names are not necessary
 
 export 'src/entities/entities.dart';
 export 'src/models/models.dart';

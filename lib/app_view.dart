@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pizza_ap_admin/src/blocs/authentication_bloc/authentication_bloc.dart';
+import 'package:pizza_ap_admin/src/routes/routes.dart';
 
 class AppView extends StatelessWidget {
   const AppView({super.key});
@@ -10,13 +11,13 @@ class AppView extends StatelessWidget {
       title: "Pizza Admin",
       theme: ThemeData(
         colorScheme: ColorScheme.light(
-          background: Colors.grey.shade200,
-          onBackground: Colors.black,
+          surface: Colors.grey.shade200,
+          onSurface: Colors.black,
           primary: Colors.blue,
           onPrimary: Colors.white,
         )
       ),
-      routerConfig: router(context.read<AuthenticationBloc>())
+      routerConfig: router(context).read<AuthenticationBloc>()
     );
   }
 }

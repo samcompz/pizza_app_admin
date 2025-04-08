@@ -81,9 +81,9 @@ class BaseScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
-                child: widget.child
-            ),
+            // Expanded(
+            //     child: widget.child
+            // ),
           ],
         ),
       ),

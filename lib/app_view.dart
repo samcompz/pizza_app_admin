@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pizza_ap_admin/src/blocs/authentication_bloc/authentication_bloc.dart';
 import 'package:pizza_ap_admin/src/routes/routes.dart';
 
@@ -17,7 +18,7 @@ class AppView extends StatelessWidget {
           onPrimary: Colors.white,
         )
       ),
-      routerConfig: router(context).read<AuthenticationBloc>()
+      routerConfig: router(context.read<AuthenticationBloc>()),
     );
   }
 }

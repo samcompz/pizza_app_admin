@@ -15,7 +15,7 @@ class CreatePizzaBloc extends Bloc<CreatePizzaEvent, CreatePizzaState> {
       emit(CreatePizzaLoading());
 
       try{
-        await pizzaRepo.createPizza(event.pizza);
+        await pizzaRepo.createPizzas(event.pizza);
         emit(CreatePizzaSuccess());
       }catch(e){
         emit(CreatePizzaFailure());

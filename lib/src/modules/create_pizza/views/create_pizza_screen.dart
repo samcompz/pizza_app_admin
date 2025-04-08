@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -387,7 +388,9 @@ class _CreatePizzaScreenState extends State<CreatePizzaScreen> {
                                           pizza.macros.fat = int.parse(fatController.text);
                                           pizza.macros.carbs = int.parse(carbsController.text);
                                         });
-                                        print(pizza.toString());
+                                        if (kDebugMode) {
+                                          print(pizza.toString());
+                                        }
                                         context.read<CreatePizzaBloc>().add(CreatePizza(pizza));
                                       }
                                     },

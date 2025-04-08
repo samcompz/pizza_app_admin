@@ -42,6 +42,7 @@ GoRouter router(AuthenticationBloc authBloc) {
             );
           }
         },
+
         routes: [
           GoRoute(
             path: '/',

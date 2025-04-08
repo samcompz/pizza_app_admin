@@ -8,6 +8,8 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authBloc = context.read<AuthenticationBloc>();
+
     return MaterialApp.router(
       title: "Pizza Admin",
       theme: ThemeData(
@@ -16,9 +18,10 @@ class AppView extends StatelessWidget {
           onSurface: Colors.black,
           primary: Colors.blue,
           onPrimary: Colors.white,
-        )
+        ),
       ),
-      routerConfig: router(context.read<AuthenticationBloc>()),
+      routerConfig: router(authBloc),
     );
   }
 }
+

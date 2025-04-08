@@ -3,9 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pizza_ap_admin/src/blocs/authentication_bloc/authentication_bloc.dart';
 import 'package:pizza_ap_admin/src/modules/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:pizza_repository/pizza_repository.dart';
 
 import '../modules/auth/views/login_screen.dart';
 import '../modules/base/views/base_screen.dart';
+import '../modules/create_pizza/blocs/create_pizza_bloc/create_pizza_bloc.dart';
+import '../modules/create_pizza/blocs/upload_picture_bloc/upload_picture_bloc.dart';
 import '../modules/create_pizza/views/create_pizza_screen.dart';
 import '../modules/home/views/home_screen.dart';
 import '../modules/splash/views/splash_screen.dart';
@@ -31,10 +34,11 @@ GoRouter router(AuthenticationBloc authBloc) {
             return child;
           } else {
             return BlocProvider<SignInBloc>(
-                create: (context) => SignInBloc(
-                    context.read<AuthenticationBloc>().userRepository
-                ),
-              child: BaseScreen(child)
+              create:
+                  (context) => SignInBloc(
+                    context.read<AuthenticationBloc>().userRepository,
+                  ),
+              child: BaseScreen(child),
             );
           }
         },
@@ -67,9 +71,20 @@ GoRouter router(AuthenticationBloc authBloc) {
 
           GoRoute(
             path: '/create',
-            builder:
-                (context, state) =>  CreatePizzaScreen(),
-
+            builder: (context, state) => MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (context) => UploadPictureBloc(
+                        FirebasePizzaRepo()
+                    ),
+                  ),
+                  BlocProvider(
+                    create: (context) => CreatePizzaBloc(
+                        FirebasePizzaRepo()
+                    ),
+                  )
+                ],
+                child: const CreatePizzaScreen()),
           ),
         ],
       ),

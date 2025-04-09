@@ -1,8 +1,11 @@
+
+import 'package:flutter/foundation.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'dart:html' as html;
+
 import '../../auth/blocs/sign_in_bloc/sign_in_bloc.dart';
 
 class BaseScreen extends StatefulWidget {
@@ -18,9 +21,12 @@ class _BaseScreenState extends State<BaseScreen> {
   Widget build(BuildContext context) {
     return BlocListener<SignInBloc, SignInState>(
       listener: (context, state) {
-        if(state is SignInSuccess) {
-          html.window.location.reload();
-        }
+        // if(state is SignInSuccess) {
+        //   if(kIsWeb){
+        //     html.window.location.reload();
+        //   }
+        //
+        // }
       },
       child: Scaffold(
         body: Column(

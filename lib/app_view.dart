@@ -11,12 +11,13 @@ class AppView extends StatelessWidget {
     final authBloc = context.read<AuthenticationBloc>();
 
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: "Pizza Admin",
       theme: ThemeData(
         colorScheme: ColorScheme.light(
           surface: Colors.grey.shade200,
           onSurface: Colors.black,
-          primary: Colors.blue,
+          primary: Colors.yellow,
           onPrimary: Colors.white,
         ),
       ),
